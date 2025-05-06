@@ -239,10 +239,7 @@ if ON_WINDOWS:
             except subprocess.TimeoutExpired:
                 pass
             except KeyboardInterrupt:
-                try:
-                    _kill(active_task)
-                except subprocess.CalledProcessError:
-                    pass  # ignore error if process closed before we got here
+                pass # No proxying of SIGINT required, Ctrl-C is sent along to the child process.
         return wait_for_active_job(last_task=active_task)
 
 else:
