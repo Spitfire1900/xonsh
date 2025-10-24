@@ -180,6 +180,7 @@ def add_args(
                 and isinstance(param.default, bool)
                 and ("action" not in kwargs)
                 and ("type" not in kwargs)
+                and (("nargs" in kwargs) and (kwargs["nargs"] != 0))
             ):
                 # opposite of default value
                 act_name = "store_false" if param.default else "store_true"
